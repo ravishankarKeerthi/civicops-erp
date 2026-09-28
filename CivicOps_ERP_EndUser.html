@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CivicOps ERP — Global Civic Infrastructure ERP</title>
+<style>
+:root{--bg:#f5f6f8;--panel:#fff;--line:#e1e4e8;--text:#252733;--muted:#6b7280;--primary:#714B67;--primary2:#8d6281;--green:#198754;--orange:#d97706;--red:#dc3545;--blue:#0d6efd;--dark:#26212a}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:13px}.app{display:flex;min-height:100vh}.sidebar{width:245px;background:var(--dark);color:#ddd;position:fixed;inset:0 auto 0 0;overflow:auto}.brand{height:58px;padding:18px;font-size:18px;font-weight:700;color:#fff;border-bottom:1px solid #403942}.brand b{color:#d8a8ca}.menu{padding:8px}.menu-title{font-size:10px;text-transform:uppercase;color:#9c949d;padding:13px 12px 6px}.menu a{display:flex;gap:10px;padding:9px 11px;border-radius:5px;color:#ddd;text-decoration:none;cursor:pointer}.menu a:hover,.menu a.active{background:var(--primary);color:#fff}.icon{width:20px;text-align:center}.main{margin-left:245px;width:calc(100% - 245px)}.topbar{height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:10}.search{width:360px;background:#f5f5f6;border:1px solid #eee;border-radius:5px;padding:9px 12px}.context{display:flex;align-items:center;gap:12px}.avatar{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700}.content{padding:20px}.view{display:none}.view.active{display:block}.pagehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.pagehead h1{font-size:22px;margin:0 0 4px}.muted{color:var(--muted)}.btn{border:1px solid #cfd3d8;background:#fff;border-radius:5px;padding:8px 12px;cursor:pointer}.btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}.btn.blue{background:var(--blue);border-color:var(--blue);color:#fff}.btn.green{background:var(--green);border-color:var(--green);color:#fff}.btn.danger{background:var(--red);border-color:var(--red);color:#fff}.btn+.btn{margin-left:6px}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.card,.panel,.module{background:#fff;border:1px solid var(--line);border-radius:7px}.card{padding:14px}.metric{font-size:24px;font-weight:700}.metric-label{font-size:11px;color:var(--muted);margin-top:3px}.delta{font-size:11px;margin-top:6px}.green{color:var(--green)}.orange{color:var(--orange)}.red{color:var(--red)}.blue-t{color:var(--blue)}.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:13px;margin-top:13px}.panel{overflow:hidden}.panel-head{padding:12px 14px;border-bottom:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between;align-items:center}.panel-body{padding:14px}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:9px 10px;border-bottom:1px solid #eee;white-space:nowrap}.table th{font-size:11px;color:#6b7280;background:#fafafa}.table tr:hover td{background:#fbf9fb}.table tr[data-id]{cursor:pointer}.badge{display:inline-block;padding:4px 8px;border-radius:12px;font-size:10px;font-weight:600}.b-green{background:#e8f5ee;color:#157347}.b-orange{background:#fff3dc;color:#9a6700}.b-red{background:#fde9eb;color:#b02a37}.b-blue{background:#e7f1ff;color:#0a58ca}.b-gray{background:#eeeef0;color:#555}.b-purple{background:#f2e9f0;color:#714B67}.workflow{display:flex;overflow:auto;padding:6px 0}.step{min-width:120px;text-align:center;position:relative}.step:not(:last-child):after{content:"→";position:absolute;right:-3px;top:12px;color:#aaa}.circle{width:32px;height:32px;border-radius:50%;background:#eee;margin:0 auto 5px;display:grid;place-items:center;font-weight:700}.done .circle{background:var(--green);color:#fff}.current .circle{background:var(--primary);color:#fff}.step small{color:#666}.module-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.module{padding:13px;cursor:pointer}.module:hover{border-color:var(--primary);box-shadow:0 2px 8px #0000000d}.module h3{margin:0 0 5px;font-size:14px}.module p{margin:0;color:#6b7280;font-size:11px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.filters input,.filters select,.field input,.field select,.field textarea{border:1px solid #cfd3d8;border-radius:4px;padding:8px 9px;background:#fff}.filters input{min-width:220px}.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field label{display:block;font-size:11px;font-weight:600;color:#555;margin-bottom:4px}.field input,.field select,.field textarea{width:100%}.field textarea{min-height:70px}.span2{grid-column:span 2}.span3{grid-column:span 3}.tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:13px}.tab{padding:9px 13px;cursor:pointer;color:#666}.tab.active{color:var(--primary);border-bottom:2px solid var(--primary);font-weight:700}.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kanban-col{background:#f7f7f8;border:1px solid var(--line);border-radius:6px;padding:9px;min-height:280px}.kanban-col h4{margin:2px 0 9px}.kanban-card{background:#fff;border:1px solid var(--line);border-radius:5px;padding:9px;margin-bottom:8px;cursor:pointer}.kv{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--line)}.kv div{padding:8px;border-bottom:1px solid var(--line)}.kv div:nth-child(odd){background:#fafafa;font-weight:600;color:#555}.alert{padding:10px 12px;border-left:4px solid var(--orange);background:#fff8e8;margin-bottom:12px}.empty{text-align:center;padding:30px;color:#777}.modal{display:none;position:fixed;inset:0;background:#0006;z-index:30;align-items:center;justify-content:center}.modal.show{display:flex}.modalbox{background:#fff;width:min(900px,94vw);max-height:90vh;overflow:auto;border-radius:8px;box-shadow:0 15px 50px #0004}.modalhead{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:700}.modalbody{padding:16px}.modalfoot{padding:12px 16px;border-top:1px solid var(--line);text-align:right}.timeline{border-left:2px solid #ddd;margin-left:8px;padding-left:16px}.event{margin-bottom:13px}.event b{font-size:12px}.event small{display:block;color:#777}.smartbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;padding:8px 0}.smartbtn{min-width:105px;border:1px solid #ddd;background:#fff;border-radius:6px;padding:8px 12px;text-align:left;cursor:pointer;box-shadow:0 1px 2px #00000008}.smartbtn:hover{border-color:#714B67;background:#faf6f9}.smartbtn span{display:block;font-size:18px;font-weight:700;color:#714B67;line-height:1.1}.smartbtn small{display:block;color:#666;font-size:10px;margin-top:3px}.smartbtn:active{transform:translateY(1px)}
+.toast{position:fixed;right:20px;bottom:20px;background:#252733;color:#fff;padding:11px 14px;border-radius:6px;display:none;z-index:50}.toast.show{display:block}.map{height:230px;background:#dfe9dc;position:relative;overflow:hidden}.road{position:absolute;background:#9da4aa;height:32px;transform:rotate(-12deg);left:-20px;right:-20px;top:100px}.road2{position:absolute;background:#b5b9bc;width:30px;height:300px;transform:rotate(35deg);left:55%;top:-35px}.drain{position:absolute;height:5px;background:#4b5563;left:8%;right:7%;top:135px}.pin{position:absolute;width:16px;height:16px;background:#dc3545;border:3px solid #fff;border-radius:50%;box-shadow:0 1px 4px #555}.p1{left:25%;top:120px}.p2{left:57%;top:145px}.p3{left:75%;top:105px}.schema{font:12px ui-monospace,Consolas,monospace;background:#20232a;color:#e9e9ea;border-radius:6px;padding:14px;white-space:pre-wrap;line-height:1.5}@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.module-grid{grid-template-columns:1fr 1fr}.formgrid{grid-template-columns:1fr 1fr}.kanban{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="brand">Civic<b>Ops</b> ERP</div>
+<div class="menu">
+<div class="menu-title">Home</div>
+<a class="active" data-view="dashboard">⌂ Dashboard</a>
+<div class="menu-title">Masters</div>
+<a data-view="masters">▦ Master Data</a>
+<a data-view="services">☷ Service Catalog</a>
+<a data-view="assets">▣ Infrastructure Assets</a>
+<a data-view="contacts">♙ Citizens & Organizations</a>
+<a data-view="locations">⌖ Locations & Zones</a>
+<a data-view="resources">⚙ Resources & Crews</a>
+<a data-view="items">▤ Items & Materials</a>
+<a data-view="doctypes">▧ Doctypes & Fields</a>
+<div class="menu-title">Transactions</div>
+<a data-view="requests">♧ Service Requests</a>
+<a data-view="inspections">⌕ Inspections</a>
+<a data-view="workorders">⚒ Work Orders</a>
+<a data-view="dispatch">➜ Dispatch & Execution</a>
+<a data-view="waste">♻ Waste & Disposal</a>
+<a data-view="maintenance">🔧 Maintenance</a>
+<div class="menu-title">Commercial & Finance</div>
+<a data-view="procurement">▥ Procurement</a>
+<a data-view="contracts">▤ Contracts & Tenders</a>
+<a data-view="measurements">☑ Service Measurements</a>
+<a data-view="claims">₹ Claims & Payments</a>
+<div class="menu-title">Control</div>
+<a data-view="safety">✓ Safety & Compliance</a>
+<a data-view="communications">✉ Communications</a>
+<a data-view="reports">▦ Reports</a>
+<a data-view="audit">◉ Audit Trail</a>
+<div class="menu-title">Administration</div>
+<a data-view="settings">⚙ Settings</a>
+</div></aside>
+
+<main class="main">
+<header class="topbar">
+<input class="search" id="globalSearch" placeholder="Search document no, citizen, asset, work order...">
+<div class="context"><span class="muted" id="authorityContext">Authority: Global Demo Government • Global</span><div class="avatar">AD</div></div>
+</header>
+<div class="content">
+
+<section id="dashboard" class="view active">
+<div class="pagehead"><div><h1>Dashboard</h1><div class="muted">Civic Infrastructure ERP • End-user operational workspace</div></div><div><button class="btn" onclick="openView('reports')">Reports</button><button class="btn primary" onclick="newRequest()">+ New Request</button></div></div>
+<div class="cards">
+<div class="card"><div class="metric" id="kpiReq">47</div><div class="metric-label">Open Service Requests</div><div class="delta orange">12 SLA at risk</div></div>
+<div class="card"><div class="metric" id="kpiWO">32</div><div class="metric-label">Active Work Orders</div><div class="delta blue-t">18 dispatched</div></div>
+<div class="card"><div class="metric">1,284</div><div class="metric-label">Registered Assets</div><div class="delta green">98.4% mapped</div></div>
+<div class="card"><div class="metric">8</div><div class="metric-label">Service Pods / Vehicles</div><div class="delta green">6 available</div></div>
+<div class="card"><div class="metric">94.2%</div><div class="metric-label">SLA Compliance</div><div class="delta green">Current period</div></div>
+</div>
+<div class="panel" style="margin-top:13px"><div class="panel-head">End-to-End ERP Process <span class="badge b-purple">Transaction Flow</span></div><div class="panel-body"><div class="workflow">
+<div class="step done"><div class="circle">1</div><b>Request</b><small>Service Request</small></div><div class="step done"><div class="circle">2</div><b>Inspect</b><small>Inspection</small></div><div class="step current"><div class="circle">3</div><b>Plan</b><small>Work Order</small></div><div class="step"><div class="circle">4</div><b>Dispatch</b><small>Crew / Pod</small></div><div class="step"><div class="circle">5</div><b>Execute</b><small>Job Execution</small></div><div class="step"><div class="circle">6</div><b>Measure</b><small>Service Measurement</small></div><div class="step"><div class="circle">7</div><b>Claim</b><small>Contract Claim</small></div><div class="step"><div class="circle">8</div><b>Close</b><small>Verification</small></div>
+</div></div></div>
+<div class="grid2">
+<div class="panel"><div class="panel-head">Pending Transactions <button class="btn" onclick="openView('requests')">View All</button></div><div class="table-wrap"><table class="table"><thead><tr><th>Document</th><th>Type</th><th>Party / Asset</th><th>Status</th><th>Due</th></tr></thead><tbody id="dashTx"></tbody></table></div></div>
+<div class="panel"><div class="panel-head">Quick Create</div><div class="panel-body"><div class="module-grid" style="grid-template-columns:1fr 1fr">
+<div class="module" onclick="newRequest()"><h3>+ Service Request</h3><p>Register citizen/business/agency issue.</p></div>
+<div class="module" onclick="openView('inspections')"><h3>+ Inspection</h3><p>Record field findings.</p></div>
+<div class="module" onclick="openView('workorders')"><h3>+ Work Order</h3><p>Create planned execution job.</p></div>
+<div class="module" onclick="openView('claims')"><h3>+ Claim</h3><p>Prepare contractor claim.</p></div>
+</div></div></div>
+</div></section>
+
+<section id="masters" class="view">
+<div class="pagehead"><div><h1>Master Data</h1><div class="muted">Foundation records used by every transaction</div></div><button class="btn primary" onclick="openMaster('Service Type')">+ New Master</button></div>
+<div class="module-grid">
+<div class="module" onclick="openView('services')"><h3>Service Types</h3><p>Service codes, units, SLAs, billing methods</p></div>
+<div class="module" onclick="openView('contacts')"><h3>Citizens & Organizations</h3><p>Requesters, contractors, agencies, suppliers</p></div>
+<div class="module" onclick="openView('assets')"><h3>Infrastructure Assets</h3><p>Drain segments, nodes, structures and facilities</p></div>
+<div class="module" onclick="openView('locations')"><h3>Zones & Locations</h3><p>Jurisdiction, region, zone, depot, GPS</p></div>
+<div class="module" onclick="openView('resources')"><h3>Crews & Equipment</h3><p>Employees, vehicles, pods and equipment</p></div>
+<div class="module" onclick="openView('items')"><h3>Items & Materials</h3><p>Consumables, spare parts, PPE, tools</p></div>
+</div>
+<div class="panel" style="margin-top:13px"><div class="panel-head">Master Record Relationships</div><div class="panel-body"><div class="schema">Authority → Department → Service Zone
+                 ↓
+Service Type → SLA Policy → Request → Inspection
+                 ↓                         ↓
+Asset Master ← GIS Location ← Work Order → Crew / Pod
+                                      ↓
+                              Materials / Waste
+                                      ↓
+                              Measurement → Claim → Payment</div></div></div>
+</section>
+
+<section id="services" class="view">
+<div class="pagehead"><div><h1>Service Type Master</h1><div class="muted">Define what the authority delivers and how it is measured</div></div><button class="btn primary" onclick="openMaster('Service Type')">+ New Service Type</button></div>
+<div class="filters"><input oninput="filterTable(this,'serviceTable')" placeholder="Search service..."><select onchange="filterTable(this,'serviceTable')"><option>All Status</option><option>Active</option><option>Inactive</option></select></div>
+<div class="panel"><div class="table-wrap"><table class="table" id="serviceTable"><thead><tr><th>Code</th><th>Service</th><th>Category</th><th>UOM</th><th>SLA</th><th>Billing</th><th>Status</th></tr></thead><tbody>
+<tr data-id="SVC-001" onclick="openRecord('Service Type','SVC-001')"><td>SVC-001</td><td>Drain Blockage Removal</td><td>Drainage</td><td>Job</td><td>24 hrs</td><td>Contract / Public</td><td><span class="badge b-green">Active</span></td></tr>
+<tr data-id="SVC-002" onclick="openRecord('Service Type','SVC-002')"><td>SVC-002</td><td>Preventive Drain Cleaning</td><td>Maintenance</td><td>KM</td><td>72 hrs</td><td>Contract</td><td><span class="badge b-green">Active</span></td></tr>
+<tr data-id="SVC-003" onclick="openRecord('Service Type','SVC-003')"><td>SVC-003</td><td>Emergency Flood Response</td><td>Emergency</td><td>Hour</td><td>2 hrs</td><td>Emergency Budget</td><td><span class="badge b-green">Active</span></td></tr>
+</tbody></table></div></div>
+</section>
+
+<section id="contacts" class="view">
+<div class="pagehead"><div><h1>Citizens & Organizations</h1><div class="muted">Unified party master</div></div><button class="btn primary" onclick="openMaster('Party')">+ New Party</button></div>
+<div class="filters"><input oninput="filterTable(this,'partyTable')" placeholder="Search name / reference..."><select><option>All Types</option><option>Citizen</option><option>Business</option><option>Contractor</option><option>Agency</option></select></div>
+<div class="panel"><div class="table-wrap"><table class="table" id="partyTable"><thead><tr><th>Party No</th><th>Name</th><th>Type</th><th>Phone / Email</th><th>Zone</th><th>Status</th></tr></thead><tbody>
+<tr onclick="openRecord('Party','PTY-00041')"><td>PTY-00041</td><td>Resident Association – North Zone</td><td>Organization</td><td>contact@example.org</td><td>North</td><td><span class="badge b-green">Active</span></td></tr>
+<tr onclick="openRecord('Party','PTY-00057')"><td>PTY-00057</td><td>Business District Operator</td><td>Business</td><td>ops@example.org</td><td>Central</td><td><span class="badge b-green">Active</span></td></tr>
+<tr onclick="openRecord('PTY-00102')"><td>PTY-00102</td><td>Infrastructure Services Ltd.</td><td>Contractor</td><td>contracts@example.org</td><td>Multiple</td><td><span class="badge b-blue">Vendor</span></td></tr>
+</tbody></table></div></div>
+</section>
+
+<section id="locations" class="view">
+<div class="pagehead"><div><h1>Locations & Service Zones</h1><div class="muted">Jurisdiction-aware geographical master</div></div><button class="btn primary" onclick="openMaster('Service Zone')">+ New Zone</button></div>
+<div class="grid2"><div class="panel"><div class="panel-head">Zone Master</div><div class="table-wrap"><table class="table"><thead><tr><th>Code</th><th>Zone</th><th>Level</th><th>Depot</th><th>Assets</th></tr></thead><tbody><tr><td>Z-N01</td><td>North Service Zone</td><td>Operational</td><td>Depot North</td><td>412</td></tr><tr><td>Z-C01</td><td>Central Service Zone</td><td>Operational</td><td>Central Depot</td><td>387</td></tr><tr><td>Z-S01</td><td>South Service Zone</td><td>Operational</td><td>Depot South</td><td>485</td></tr></tbody></table></div></div>
+<div class="panel"><div class="panel-head">GIS Asset View</div><div class="map"><div class="road"></div><div class="road2"></div><div class="drain"></div><div class="pin p1"></div><div class="pin p2"></div><div class="pin p3"></div></div></div></div>
+</section>
+
+<section id="assets" class="view">
+<div class="pagehead"><div><h1>Infrastructure Asset Master</h1><div class="muted">Register physical infrastructure and spatial attributes</div></div><button class="btn primary" onclick="openMaster('Asset')">+ New Asset</button></div>
+<div class="filters"><input oninput="filterTable(this,'assetTable')" placeholder="Search asset code / type..."><select><option>All Condition</option><option>Good</option><option>Fair</option><option>Poor</option><option>Critical</option></select></div>
+<div class="panel"><div class="table-wrap"><table class="table" id="assetTable"><thead><tr><th>Asset Code</th><th>Type</th><th>Zone</th><th>Material</th><th>Size</th><th>Condition</th><th>Risk</th><th>Next Inspection</th></tr></thead><tbody>
+<tr onclick="openRecord('Asset','AST-00042')"><td>AST-00042</td><td>Drain Segment</td><td>North</td><td>Concrete</td><td>900 mm</td><td><span class="badge b-orange">Fair</span></td><td><span class="badge b-red">High</span></td><td>12 Oct 2026</td></tr>
+<tr onclick="openRecord('Asset','AST-00051')"><td>AST-00051</td><td>Drain Node</td><td>Central</td><td>Concrete</td><td>1200 mm</td><td><span class="badge b-green">Good</span></td><td><span class="badge b-blue">Medium</span></td><td>02 Nov 2026</td></tr>
+<tr onclick="openRecord('Asset','AST-00057')"><td>AST-00057</td><td>Outfall</td><td>South</td><td>Steel / Concrete</td><td>1500 mm</td><td><span class="badge b-red">Critical</span></td><td><span class="badge b-red">Critical</span></td><td>Immediate</td></tr>
+</tbody></table></div></div>
+</section>
+
+<section id="resources" class="view">
+<div class="pagehead"><div><h1>Resources & Crews</h1><div class="muted">Employees, teams, pods, vehicles and equipment</div></div><button class="btn primary" onclick="openMaster('Resource')">+ New Resource</button></div>
+<div class="module-grid"><div class="module"><h3>Crews</h3><p>Team composition, supervisor, skills, shifts</p></div><div class="module"><h3>Drain Pods</h3><p>Capacity, meter, telemetry, availability</p></div><div class="module"><h3>Vehicles</h3><p>Registration, ownership, route and utilization</p></div><div class="module"><h3>Equipment</h3><p>Pumps, cameras, tools and calibration</p></div><div class="module"><h3>Employees</h3><p>Operator, inspector and supervisor master</p></div><div class="module"><h3>Skills</h3><p>Skill level and authorization matrix</p></div></div>
+</section>
+
+<section id="items" class="view">
+<div class="pagehead"><div><h1>Items & Materials</h1><div class="muted">Inventory master for consumables, spare parts and PPE</div></div><button class="btn primary" onclick="openMaster('Item')">+ New Item</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Item Code</th><th>Item</th><th>Group</th><th>UOM</th><th>Warehouse</th><th>Available</th><th>Reorder</th></tr></thead><tbody><tr><td>MAT-001</td><td>Drain Cleaning Nozzle</td><td>Tools</td><td>Nos</td><td>Central Depot</td><td>14</td><td>5</td></tr><tr><td>MAT-014</td><td>PPE Confined Space Kit</td><td>Safety</td><td>Set</td><td>North Depot</td><td>22</td><td>10</td></tr><tr><td>MAT-033</td><td>Hydraulic Hose</td><td>Spare Parts</td><td>Nos</td><td>Workshop</td><td>6</td><td>4</td></tr></tbody></table></div></div>
+</section>
+
+<section id="requests" class="view">
+<div class="pagehead"><div><h1>Service Requests</h1><div class="muted">Transaction: request intake and SLA management</div></div><button class="btn primary" onclick="newRequest()">+ New Service Request</button></div>
+<div class="filters"><input oninput="filterTable(this,'reqTable')" placeholder="Search request no / requester / asset..."><select><option>All Status</option><option>New</option><option>Assigned</option><option>In Progress</option><option>Resolved</option><option>Closed</option></select><select><option>All Priority</option><option>Critical</option><option>High</option><option>Normal</option></select></div>
+<div class="panel"><div class="table-wrap"><table class="table" id="reqTable"><thead><tr><th>Request No</th><th>Reported By</th><th>Service</th><th>Asset</th><th>Priority</th><th>SLA Due</th><th>Status</th></tr></thead><tbody id="reqBody"></tbody></table></div></div>
+</section>
+
+<section id="inspections" class="view">
+<div class="pagehead"><div><h1>Inspections</h1><div class="muted">Transaction: field inspection and recommendation</div></div><button class="btn primary" onclick="openMaster('Inspection')">+ New Inspection</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Inspection No</th><th>Request</th><th>Asset</th><th>Inspector</th><th>Finding</th><th>Recommendation</th><th>Status</th></tr></thead><tbody>
+<tr onclick="openRecord('Inspection','INS-2026-0041')"><td>INS-2026-0041</td><td>SR-2026-0047</td><td>AST-00042</td><td>Field Inspector A</td><td>Heavy silt / blockage</td><td>Mechanical cleaning</td><td><span class="badge b-green">Approved</span></td></tr>
+<tr><td>INS-2026-0042</td><td>SR-2026-0051</td><td>AST-00057</td><td>Field Inspector B</td><td>Structural concern</td><td>Emergency response</td><td><span class="badge b-orange">Pending</span></td></tr>
+</tbody></table></div></div>
+</section>
+
+<section id="workorders" class="view">
+<div class="pagehead"><div><h1>Work Orders</h1><div class="muted">Transaction: plan and execute approved service work</div></div><button class="btn primary" onclick="openMaster('Work Order')">+ New Work Order</button></div>
+<div class="tabs"><div class="tab active" onclick="switchTab(this,'woList')">List</div><div class="tab" onclick="switchTab(this,'woKanban')">Kanban</div></div>
+<div id="woList" class="tabpane"><div class="filters"><input oninput="filterTable(this,'woTable')" placeholder="Search work order..."><select><option>All Status</option><option>Draft</option><option>Confirmed</option><option>Dispatched</option><option>In Progress</option><option>Completed</option><option>Verified</option></select></div><div class="panel"><div class="table-wrap"><table class="table" id="woTable"><thead><tr><th>WO No</th><th>Request</th><th>Asset</th><th>Work Type</th><th>Crew</th><th>Pod</th><th>Planned Date</th><th>Status</th></tr></thead><tbody id="woBody"></tbody></table></div></div></div>
+<div id="woKanban" class="tabpane" style="display:none"><div class="kanban"><div class="kanban-col"><h4>Draft</h4><div class="kanban-card">WO-2026-0108<br><small>AST-00057 • Emergency</small></div></div><div class="kanban-col"><h4>Confirmed</h4><div class="kanban-card">WO-2026-0107<br><small>AST-00042 • Cleaning</small></div></div><div class="kanban-col"><h4>In Progress</h4><div class="kanban-card">WO-2026-0102<br><small>AST-00051 • Preventive</small></div></div><div class="kanban-col"><h4>Completed</h4><div class="kanban-card">WO-2026-0098<br><small>AST-00021 • Verified</small></div></div></div></div>
+</section>
+
+<section id="dispatch" class="view">
+<div class="pagehead"><div><h1>Dispatch & Field Execution</h1><div class="muted">Assign resource → start job → capture evidence → complete</div></div><button class="btn primary" onclick="openMaster('Dispatch')">+ Dispatch</button></div>
+<div class="panel"><div class="panel-head">Today's Dispatch Board</div><div class="table-wrap"><table class="table"><thead><tr><th>WO</th><th>Zone</th><th>Crew</th><th>Pod</th><th>Route</th><th>Start</th><th>GPS</th><th>Status</th><th>Action</th></tr></thead><tbody>
+<tr><td>WO-2026-0107</td><td>North</td><td>Crew Alpha</td><td>POD-004</td><td>R-018</td><td>09:00</td><td>✓</td><td><span class="badge b-blue">Dispatched</span></td><td><button class="btn" onclick="executeJob('WO-2026-0107')">Open Job</button></td></tr>
+<tr><td>WO-2026-0102</td><td>Central</td><td>Crew Delta</td><td>POD-002</td><td>R-021</td><td>10:30</td><td>✓</td><td><span class="badge b-orange">In Progress</span></td><td><button class="btn" onclick="executeJob('WO-2026-0102')">Open Job</button></td></tr>
+</tbody></table></div></div>
+</section>
+
+<section id="waste" class="view">
+<div class="pagehead"><div><h1>Waste & Disposal</h1><div class="muted">Trace waste from source work order to authorized destination</div></div><button class="btn primary" onclick="openMaster('Waste Manifest')">+ New Manifest</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Manifest</th><th>WO</th><th>Waste Type</th><th>Quantity</th><th>Transporter</th><th>Destination</th><th>Receipt</th></tr></thead><tbody><tr><td>WM-2026-0031</td><td>WO-2026-0102</td><td>Silt / debris</td><td>4.8 m³</td><td>Fleet-12</td><td>Authorized Facility A</td><td><span class="badge b-green">Received</span></td></tr><tr><td>WM-2026-0032</td><td>WO-2026-0107</td><td>Mixed debris</td><td>2.1 m³</td><td>Fleet-08</td><td>Authorized Facility B</td><td><span class="badge b-orange">Pending</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="maintenance" class="view">
+<div class="pagehead"><div><h1>Maintenance</h1><div class="muted">Preventive and corrective maintenance for pods, vehicles and equipment</div></div><button class="btn primary" onclick="openMaster('Maintenance Request')">+ Maintenance Request</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Request</th><th>Asset</th><th>Type</th><th>Meter</th><th>Due</th><th>Status</th></tr></thead><tbody><tr><td>MR-2026-0028</td><td>POD-004</td><td>Preventive</td><td>1,480 hrs</td><td>01 Oct 2026</td><td><span class="badge b-orange">Due Soon</span></td></tr><tr><td>MR-2026-0029</td><td>CAM-011</td><td>Calibration</td><td>—</td><td>05 Oct 2026</td><td><span class="badge b-green">Scheduled</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="procurement" class="view">
+<div class="pagehead"><div><h1>Procurement</h1><div class="muted">Requisition → RFQ → evaluation → purchase order → receipt</div></div><button class="btn primary" onclick="openMaster('Purchase Requisition')">+ New Requisition</button></div>
+<div class="workflow"><div class="step done"><div class="circle">1</div><b>Requisition</b></div><div class="step current"><div class="circle">2</div><b>RFQ / Tender</b></div><div class="step"><div class="circle">3</div><b>Evaluation</b></div><div class="step"><div class="circle">4</div><b>Purchase Order</b></div><div class="step"><div class="circle">5</div><b>Receipt</b></div><div class="step"><div class="circle">6</div><b>Invoice</b></div></div>
+<div class="panel" style="margin-top:13px"><div class="table-wrap"><table class="table"><thead><tr><th>PR No</th><th>Department</th><th>Item</th><th>Qty</th><th>Required Date</th><th>Status</th></tr></thead><tbody><tr><td>PR-2026-0041</td><td>Operations</td><td>PPE Confined Space Kit</td><td>20</td><td>10 Oct 2026</td><td><span class="badge b-blue">RFQ Sent</span></td></tr><tr><td>PR-2026-0042</td><td>Workshop</td><td>Hydraulic Hose</td><td>12</td><td>08 Oct 2026</td><td><span class="badge b-orange">Pending Approval</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="contracts" class="view">
+<div class="pagehead"><div><h1>Contracts & Tenders</h1><div class="muted">Government procurement and service contract master</div></div><button class="btn primary" onclick="openMaster('Contract')">+ New Contract</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Contract</th><th>Contractor</th><th>Scope</th><th>Zones</th><th>Period</th><th>Value</th><th>SLA</th><th>Status</th></tr></thead><tbody><tr><td>CTR-2026-014</td><td>Infrastructure Services Ltd.</td><td>Drain Maintenance</td><td>North, Central</td><td>01 Apr–31 Mar</td><td>Configured</td><td>95%</td><td><span class="badge b-green">Active</span></td></tr><tr><td>CTR-2026-019</td><td>Emergency Response Co.</td><td>Emergency Services</td><td>All Zones</td><td>01 Jul–30 Jun</td><td>Configured</td><td>98%</td><td><span class="badge b-blue">Active</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="measurements" class="view">
+<div class="pagehead"><div><h1>Service Measurements</h1><div class="muted">Verify completed quantity before commercial claim</div></div><button class="btn primary" onclick="openMaster('Measurement')">+ New Measurement</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Measurement</th><th>Contract</th><th>WO</th><th>Service</th><th>Qty</th><th>Rate</th><th>Evidence</th><th>Verification</th></tr></thead><tbody><tr><td>SM-2026-0081</td><td>CTR-2026-014</td><td>WO-2026-0102</td><td>Preventive Cleaning</td><td>2.4 KM</td><td>Contract Rate</td><td>✓</td><td><span class="badge b-green">Verified</span></td></tr><tr><td>SM-2026-0082</td><td>CTR-2026-014</td><td>WO-2026-0107</td><td>Blockage Removal</td><td>1 Job</td><td>Contract Rate</td><td>✓</td><td><span class="badge b-orange">Pending</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="claims" class="view">
+<div class="pagehead"><div><h1>Claims & Payments</h1><div class="muted">Measurement → deductions → retention → approval → payment</div></div><button class="btn primary" onclick="openMaster('Claim')">+ New Claim</button></div>
+<div class="cards"><div class="card"><div class="metric">18</div><div class="metric-label">Pending Claims</div></div><div class="card"><div class="metric">6</div><div class="metric-label">Under Verification</div></div><div class="card"><div class="metric">4</div><div class="metric-label">Approved</div></div><div class="card"><div class="metric">8</div><div class="metric-label">Payment Pending</div></div><div class="card"><div class="metric">—</div><div class="metric-label">Current Period Value</div></div></div>
+<div class="panel" style="margin-top:13px"><div class="table-wrap"><table class="table"><thead><tr><th>Claim</th><th>Contract</th><th>Period</th><th>Gross</th><th>Deductions</th><th>Retention</th><th>Net</th><th>Status</th></tr></thead><tbody><tr><td>CLM-2026-0067</td><td>CTR-2026-014</td><td>Sep 2026</td><td>Calculated</td><td>Calculated</td><td>Configured</td><td>Calculated</td><td><span class="badge b-orange">Verification</span></td></tr><tr><td>CLM-2026-0064</td><td>CTR-2026-019</td><td>Sep 2026</td><td>Calculated</td><td>Calculated</td><td>Configured</td><td>Calculated</td><td><span class="badge b-green">Approved</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="safety" class="view">
+<div class="pagehead"><div><h1>Safety & Compliance</h1><div class="muted">Permit, risk assessment, gas test, incident and regulatory controls</div></div><button class="btn primary" onclick="openMaster('Permit to Work')">+ New Permit</button></div>
+<div class="module-grid"><div class="module"><h3>Permit to Work</h3><p>Confined space, isolation, PPE, authorization</p></div><div class="module"><h3>Risk Assessment</h3><p>Hazard, likelihood, consequence, controls</p></div><div class="module"><h3>Gas Test</h3><p>O₂, LEL, H₂S, CO, instrument calibration</p></div><div class="module"><h3>Incident</h3><p>Event, immediate action, RCA, CAPA</p></div><div class="module"><h3>Compliance Rules</h3><p>Jurisdictional rules and mandatory documents</p></div><div class="module"><h3>Audit Evidence</h3><p>Photo, video, GPS, timestamp, document trail</p></div></div>
+</section>
+
+<section id="communications" class="view">
+<div class="pagehead"><div><h1>Communications</h1><div class="muted">Operational notifications linked to ERP transactions</div></div><button class="btn primary" onclick="openMaster('Notification Template')">+ Template</button></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Message</th><th>Document</th><th>Channel</th><th>Recipient</th><th>Sent</th><th>Status</th></tr></thead><tbody><tr><td>Work Order Dispatched</td><td>WO-2026-0107</td><td>Email</td><td>Contractor</td><td>09:01</td><td><span class="badge b-green">Sent</span></td></tr><tr><td>Service Completed</td><td>SR-2026-0047</td><td>Portal</td><td>Requester</td><td>—</td><td><span class="badge b-orange">Queued</span></td></tr></tbody></table></div></div>
+</section>
+
+<section id="reports" class="view">
+<div class="pagehead"><div><h1>Reports & Analytics</h1><div class="muted">Operational, asset, contractor, finance and compliance reporting</div></div><button class="btn" onclick="toast('Report export prepared')">Export</button></div>
+<div class="module-grid">
+<div class="module" onclick="openReport('Service Request Register')"><h3>Service Request Register</h3><p>Requests by status, source, zone, priority and SLA.</p></div>
+<div class="module" onclick="openReport('Work Order Performance')"><h3>Work Order Performance</h3><p>Planned vs actual, crew productivity, completion.</p></div>
+<div class="module" onclick="openReport('Asset Condition')"><h3>Asset Condition Report</h3><p>Condition, risk, inspection coverage and recurrence.</p></div>
+<div class="module" onclick="openReport('SLA Dashboard')"><h3>SLA Dashboard</h3><p>Response and completion compliance by service.</p></div>
+<div class="module" onclick="openReport('Contractor Performance')"><h3>Contractor Performance</h3><p>Measurements, claims, penalties and SLA.</p></div>
+<div class="module" onclick="openReport('Waste Traceability')"><h3>Waste Traceability</h3><p>Source → transporter → destination → receipt.</p></div>
+<div class="module" onclick="openReport('Inventory Report')"><h3>Inventory & Consumption</h3><p>Stock, consumption, reorder and material cost.</p></div>
+<div class="module" onclick="openReport('Maintenance')"><h3>Fleet & Maintenance</h3><p>Utilization, meter, PM due and downtime.</p></div>
+<div class="module" onclick="openReport('Audit')"><h3>Audit Trail</h3><p>Who changed what, when, and why.</p></div>
+</div>
+</section>
+
+<section id="audit" class="view">
+<div class="pagehead"><div><h1>Audit Trail</h1><div class="muted">Immutable-style business audit view for demonstration</div></div></div>
+<div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Date/Time</th><th>User</th><th>Document</th><th>Action</th><th>Field</th><th>Old</th><th>New</th></tr></thead><tbody><tr><td>28 Sep 2026 10:14</td><td>Operations Planner</td><td>WO-2026-0107</td><td>Update</td><td>Status</td><td>Confirmed</td><td>Dispatched</td></tr><tr><td>28 Sep 2026 09:58</td><td>Inspector</td><td>INS-2026-0041</td><td>Approve</td><td>Approval State</td><td>Pending</td><td>Approved</td></tr><tr><td>28 Sep 2026 09:42</td><td>Call Centre</td><td>SR-2026-0047</td><td>Create</td><td>Status</td><td>—</td><td>New</td></tr></tbody></table></div></div>
+</section>
+
+<section id="doctypes" class="view">
+<div class="pagehead"><div><h1>Doctypes & Fields</h1><div class="muted">Interactive ERP metadata: select a module, doctype, field and sample record</div></div><button class="btn primary" onclick="newDoctypeField()">+ Add Field</button></div>
+<div class="grid2">
+<div class="panel"><div class="panel-head">Doctype Explorer</div><div class="panel-body"><div class="filters"><input id="doctypeSearch" oninput="renderDoctypes()" placeholder="Search doctype / module..."></div><div id="doctypeList"></div></div></div>
+<div class="panel"><div class="panel-head" id="fieldPanelTitle">Select a Doctype</div><div class="panel-body"><div id="fieldPanel"><div class="empty">Select a Doctype from the left.</div></div></div></div>
+</div>
+<div class="panel" style="margin-top:13px"><div class="panel-head">Interactive Sample Record <span id="recordTypeBadge" class="badge b-purple">No Doctype</span></div><div class="panel-body"><div id="sampleRecord"><div class="empty">Select a Doctype to load its sample record.</div></div></div></div>
+</section>
+<section id="settings" class="view">
+<div class="pagehead"><div><h1>Settings</h1><div class="muted">Global deployment and ERP behavior configuration</div></div><button class="btn primary" onclick="saveSettings()">Save Settings</button></div>
+<div class="panel"><div class="panel-head">Organization & Localization</div><div class="panel-body"><div class="formgrid">
+<div class="field"><label>Country / Jurisdiction</label><input id="country" value="Global"></div><div class="field"><label>Authority Name</label><input id="authority" value="Global Demo Government"></div><div class="field"><label>Authority Level</label><select id="level"><option>National</option><option>Regional</option><option selected>Local</option><option>Utility</option><option>Contract Operator</option></select></div>
+<div class="field"><label>Base Currency</label><input id="currency" value="Configured by deployment"></div><div class="field"><label>Timezone</label><input id="timezone" value="Configured by deployment"></div><div class="field"><label>GIS Coordinate System</label><input id="crs" value="Configured by deployment"></div>
+<div class="field"><label>Fiscal Year</label><input id="fy" value="Configured by jurisdiction"></div><div class="field"><label>Default Service Zone</label><input id="zone" value="North Service Zone"></div><div class="field"><label>Numbering Series</label><input value="Auto / Configurable"></div>
+</div></div></div>
+</section>
+
+</div></main></div>
+
+<div id="modal" class="modal"><div class="modalbox"><div class="modalhead"><span id="modalTitle">Document</span><button class="btn" onclick="closeModal()">×</button></div><div class="modalbody" id="modalBody"></div><div class="modalfoot"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="saveModal()">Save</button></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const requests=[
+{id:"SR-2026-0047",party:"Resident Association – North Zone",service:"Drain Blockage Removal",asset:"AST-00042",priority:"High",due:"28 Sep 2026 16:00",status:"Assigned"},
+{id:"SR-2026-0051",party:"Business District Operator",service:"Emergency Flood Response",asset:"AST-00057",priority:"Critical",due:"28 Sep 2026 14:00",status:"In Progress"},
+{id:"SR-2026-0058",party:"Citizen / Portal",service:"Preventive Drain Cleaning",asset:"AST-00051",priority:"Normal",due:"30 Sep 2026 12:00",status:"New"},
+{id:"SR-2026-0062",party:"Infrastructure Agency",service:"Drain Blockage Removal",asset:"AST-00021",priority:"High",due:"29 Sep 2026 10:00",status:"New"}
+];
+const workorders=[
+{id:"WO-2026-0107",req:"SR-2026-0047",asset:"AST-00042",type:"Blockage Removal",crew:"Crew Alpha",pod:"POD-004",date:"28 Sep 2026",status:"Dispatched"},
+{id:"WO-2026-0102",req:"SR-2026-0058",asset:"AST-00051",type:"Preventive Cleaning",crew:"Crew Delta",pod:"POD-002",date:"28 Sep 2026",status:"In Progress"},
+{id:"WO-2026-0098",req:"SR-2026-0039",asset:"AST-00021",type:"Routine Cleaning",crew:"Crew Beta",pod:"POD-001",date:"27 Sep 2026",status:"Completed"}
+];
+let modalMode="";
+
+
+const doctypeDB={
+"Service Request":{module:"Public Service",fields:[
+["request_no","Char","Yes","Auto Number","SR-2026-0047"],["requester_id","Many2one","Yes","Party","Resident Association – North Zone"],["service_type_id","Many2one","Yes","Service Type","Drain Blockage Removal"],["source_channel","Selection","Yes","Portal / Phone / Email / API / Sensor","Portal"],["asset_id","Many2one","No","Infrastructure Asset","AST-00042"],["location","Char","Yes","Address / Place","North Service Zone"],["latitude","Float","No","GPS","0.000000"],["longitude","Float","No","GPS","0.000000"],["priority","Selection","Yes","Low / Normal / High / Critical","High"],["description","Text","No","Long Text","Heavy blockage reported"],["sla_policy_id","Many2one","Yes","SLA Policy","Standard 24 Hour"],["sla_due_at","Datetime","No","Calculated","28 Sep 2026 16:00"],["status","Selection","Yes","New / Assigned / In Progress / Resolved / Closed","Assigned"]]},
+"Inspection":{module:"Field Operations",fields:[["inspection_no","Char","Yes","Auto Number","INS-2026-0041"],["request_id","Many2one","Yes","Service Request","SR-2026-0047"],["asset_id","Many2one","Yes","Infrastructure Asset","AST-00042"],["inspector_id","Many2one","Yes","Employee","Field Inspector A"],["inspection_type","Selection","Yes","Complaint / Routine / Emergency","Complaint"],["arrival_time","Datetime","No","Date & Time","28 Sep 2026 10:00"],["blockage_type","Selection","No","Silt / Debris / Root / Structural","Silt"],["severity","Selection","Yes","Low / Medium / High / Critical","High"],["confined_space_required","Boolean","Yes","Checkbox","No"],["recommendation","Text","Yes","Recommended Service","Mechanical cleaning"],["approval_state","Selection","Yes","Pending / Approved / Rejected","Approved"]]},
+"Work Order":{module:"Field Operations",fields:[["work_order_no","Char","Yes","Auto Number","WO-2026-0107"],["request_id","Many2one","Yes","Service Request","SR-2026-0047"],["inspection_id","Many2one","No","Inspection","INS-2026-0041"],["asset_id","Many2one","Yes","Infrastructure Asset","AST-00042"],["work_type_id","Many2one","Yes","Service Type","Drain Blockage Removal"],["crew_id","Many2one","Yes","Crew","Crew Alpha"],["pod_id","Many2one","No","Drain Pod","POD-004"],["planned_start","Datetime","Yes","Date & Time","28 Sep 2026 15:00"],["planned_end","Datetime","No","Date & Time","28 Sep 2026 17:00"],["priority","Selection","Yes","Low / Normal / High / Critical","High"],["material_line_ids","One2many","No","Material Lines","3 lines"],["permit_id","Many2one","No","Permit to Work","PTW-2026-0021"],["status","Selection","Yes","Draft / Confirmed / Dispatched / In Progress / Completed / Verified","Dispatched"]]},
+"Infrastructure Asset":{module:"GIS & Assets",fields:[["asset_code","Char","Yes","Unique Code","AST-00042"],["asset_type","Selection","Yes","Segment / Node / Outfall / Facility","Drain Segment"],["authority_id","Many2one","Yes","Authority","Global Demo Government"],["zone_id","Many2one","Yes","Service Zone","North Service Zone"],["parent_asset_id","Many2one","No","Asset","—"],["material","Selection","No","Concrete / Steel / PVC / Other","Concrete"],["diameter_or_width","Float","No","mm","900"],["length_m","Float","No","m","48.5"],["latitude","Float","No","GPS","0.000000"],["longitude","Float","No","GPS","0.000000"],["geometry","GeoJSON","No","Spatial Geometry","LineString"],["condition_score","Float","Yes","0–100","62"],["risk_score","Float","Yes","0–100","81"],["next_inspection_date","Date","No","Date","12 Oct 2026"]]},
+"Service Type":{module:"Master Data",fields:[["service_code","Char","Yes","Unique Code","SVC-001"],["name","Char","Yes","Service Name","Drain Blockage Removal"],["category","Selection","Yes","Drainage / Emergency / Maintenance","Drainage"],["uom","Many2one","Yes","Unit of Measure","Job"],["response_hours","Float","Yes","Hours","24"],["completion_hours","Float","Yes","Hours","48"],["billing_method","Selection","Yes","Public / Contract / Grant","Contract"],["active","Boolean","Yes","Checkbox","Yes"]]},
+"Contract":{module:"Commercial",fields:[["contract_no","Char","Yes","Auto Number","CTR-2026-014"],["contractor_id","Many2one","Yes","Party","Infrastructure Services Ltd."],["scope","Text","Yes","Scope","Drain Maintenance"],["start_date","Date","Yes","Date","01 Apr 2026"],["end_date","Date","Yes","Date","31 Mar 2027"],["zone_ids","Many2many","No","Service Zones","North, Central"],["rate_card_id","Many2one","Yes","Rate Card","RC-2026-01"],["sla_target","Float","Yes","Percent","95"],["retention_pct","Float","No","Percent","5"],["penalty_rules","Text","No","Rule","Configured by contract"],["status","Selection","Yes","Draft / Active / Expired / Closed","Active"]]},
+"Claim":{module:"Finance",fields:[["claim_no","Char","Yes","Auto Number","CLM-2026-0067"],["contract_id","Many2one","Yes","Contract","CTR-2026-014"],["period","Char","Yes","Accounting Period","Sep 2026"],["measurement_ids","Many2many","Yes","Service Measurements","SM-2026-0081"],["gross_amount","Monetary","No","Currency","Calculated"],["deductions","Monetary","No","Currency","Calculated"],["penalties","Monetary","No","Currency","Calculated"],["retention","Monetary","No","Currency","Calculated"],["net_amount","Monetary","No","Currency","Calculated"],["approval_state","Selection","Yes","Draft / Verification / Approved / Paid","Verification"]]},
+"Waste Manifest":{module:"Waste Management",fields:[["manifest_no","Char","Yes","Auto Number","WM-2026-0031"],["work_order_id","Many2one","Yes","Work Order","WO-2026-0102"],["waste_type","Selection","Yes","Silt / Debris / Hazardous / Mixed","Silt / debris"],["quantity","Float","Yes","Quantity","4.8"],["uom","Many2one","Yes","Unit of Measure","m³"],["transporter_id","Many2one","Yes","Vehicle / Transporter","Fleet-12"],["destination_id","Many2one","Yes","Waste Facility","Authorized Facility A"],["seal_no","Char","No","Seal","SEAL-1182"],["receipt_no","Char","No","Facility Receipt","WR-2026-0091"],["status","Selection","Yes","Draft / In Transit / Received / Rejected","Received"]]}
+};
+let selectedDoctype=null;
+function renderDoctypes(){const q=(document.getElementById('doctypeSearch')?.value||'').toLowerCase();const box=document.getElementById('doctypeList');if(!box)return;box.innerHTML=Object.entries(doctypeDB).filter(([n,d])=>(n+' '+d.module).toLowerCase().includes(q)).map(([n,d])=>`<div class="module" style="margin-bottom:7px" onclick="selectDoctype('${n}')"><h3>${n}</h3><p>${d.module} • ${d.fields.length} fields</p></div>`).join('')||'<div class="empty">No doctypes found</div>'}
+function selectDoctype(name){selectedDoctype=name;const d=doctypeDB[name];document.getElementById('fieldPanelTitle').textContent=name+' • Fields';document.getElementById('recordTypeBadge').textContent=name;document.getElementById('fieldPanel').innerHTML=`<div class="table-wrap"><table class="table"><thead><tr><th>Field Name</th><th>Type</th><th>Required</th><th>Widget / Relation</th><th>Sample</th><th>Action</th></tr></thead><tbody>${d.fields.map((f,i)=>`<tr><td><b>${f[0]}</b></td><td>${f[1]}</td><td>${f[2]}</td><td>${f[3]}</td><td>${f[4]}</td><td><button class="btn" onclick="editField(${i})">Edit</button></td></tr>`).join('')}</tbody></table></div>`;renderSampleRecord()}
+function renderSampleRecord(){const d=doctypeDB[selectedDoctype];if(!d)return;document.getElementById('sampleRecord').innerHTML=`<div class="formgrid">${d.fields.map((f,i)=>`<div class="field ${f[1]==='Text'?'span2':''}"><label>${f[0]} <span class="muted">(${f[1]})</span></label><input id="sf_${i}" value="${String(f[4]).replaceAll('"','&quot;')}" ${f[2]==='Yes'&&f[4].toString().includes('Calculated')?'readonly':''}></div>`).join('')}<div class="field span3"><button class="btn green" onclick="saveSampleRecord()">Save Record</button> <button class="btn" onclick="resetSampleRecord()">Reset Sample</button></div></div>`}
+function editField(i){const f=doctypeDB[selectedDoctype].fields[i];modalMode='Field';document.getElementById('modalTitle').textContent='Edit Field • '+f[0];document.getElementById('modalBody').innerHTML=`<div class="formgrid"><div class="field"><label>Field Name</label><input id="ef_name" value="${f[0]}"></div><div class="field"><label>Field Type</label><select id="ef_type"><option ${f[1]==='Char'?'selected':''}>Char</option><option ${f[1]==='Text'?'selected':''}>Text</option><option ${f[1]==='Many2one'?'selected':''}>Many2one</option><option ${f[1]==='Many2many'?'selected':''}>Many2many</option><option ${f[1]==='One2many'?'selected':''}>One2many</option><option ${f[1]==='Selection'?'selected':''}>Selection</option><option ${f[1]==='Boolean'?'selected':''}>Boolean</option><option ${f[1]==='Float'?'selected':''}>Float</option><option ${f[1]==='Monetary'?'selected':''}>Monetary</option><option ${f[1]==='Date'?'selected':''}>Date</option><option ${f[1]==='Datetime'?'selected':''}>Datetime</option></select></div><div class="field"><label>Required</label><select id="ef_req"><option ${f[2]==='Yes'?'selected':''}>Yes</option><option ${f[2]==='No'?'selected':''}>No</option></select></div><div class="field span2"><label>Widget / Relation / Help</label><input id="ef_help" value="${f[3]}"></div><div class="field"><label>Sample Value</label><input id="ef_sample" value="${f[4]}"></div></div>`;document.getElementById('modal').classList.add('show')}
+function newDoctypeField(){if(!selectedDoctype){toast('Select a Doctype first');openView('doctypes');return}modalMode='New Field';document.getElementById('modalTitle').textContent='Add Field • '+selectedDoctype;document.getElementById('modalBody').innerHTML=`<div class="formgrid"><div class="field"><label>Field Name</label><input id="ef_name"></div><div class="field"><label>Field Type</label><select id="ef_type"><option>Char</option><option>Text</option><option>Many2one</option><option>Selection</option><option>Boolean</option><option>Float</option><option>Monetary</option><option>Date</option><option>Datetime</option></select></div><div class="field"><label>Required</label><select id="ef_req"><option>No</option><option>Yes</option></select></div><div class="field span2"><label>Widget / Relation / Help</label><input id="ef_help"></div><div class="field"><label>Sample Value</label><input id="ef_sample"></div></div>`;document.getElementById('modal').classList.add('show')}
+function saveSampleRecord(){toast(selectedDoctype+' record saved');}
+function resetSampleRecord(){renderSampleRecord();toast('Sample values reset')}
+
+function openView(id){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));document.querySelectorAll(".menu a").forEach(a=>a.classList.toggle("active",a.dataset.view===id));document.getElementById(id).classList.add("active");window.scrollTo(0,0)}
+document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>openView(a.dataset.view)));
+function badge(s){let c=s==="Critical"||s==="At Risk"?"b-red":s==="High"||s==="Pending"||s==="In Progress"?"b-orange":s==="Dispatched"||s==="Assigned"?"b-blue":s==="Completed"||s==="Approved"||s==="Active"||s==="Resolved"?"b-green":"b-gray";return `<span class="badge ${c}">${s}</span>`}
+function renderTables(){
+document.getElementById("reqBody").innerHTML=requests.map(r=>`<tr onclick="openRecord('Service Request','${r.id}')"><td>${r.id}</td><td>${r.party}</td><td>${r.service}</td><td>${r.asset}</td><td>${badge(r.priority)}</td><td>${r.due}</td><td>${badge(r.status)}</td></tr>`).join("");
+document.getElementById("woBody").innerHTML=workorders.map(w=>`<tr onclick="openRecord('Work Order','${w.id}')"><td>${w.id}</td><td>${w.req}</td><td>${w.asset}</td><td>${w.type}</td><td>${w.crew}</td><td>${w.pod}</td><td>${w.date}</td><td>${badge(w.status)}</td></tr>`).join("");
+document.getElementById("dashTx").innerHTML=[requests[0],requests[1],workorders[0],workorders[1]].map(x=>`<tr onclick="openRecord('${x.id.startsWith("SR")?"Service Request":"Work Order"}','${x.id}')"><td>${x.id}</td><td>${x.id.startsWith("SR")?"Service Request":"Work Order"}</td><td>${x.asset||x.party}</td><td>${badge(x.status)}</td><td>${x.due||x.date}</td></tr>`).join("");
+}
+function filterTable(input,id){let q=input.value.toLowerCase();document.querySelectorAll("#"+id+" tbody tr").forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q)?"":"none")}
+function newRequest(){openMaster("Service Request")}
+function openMaster(type){
+modalMode=type;document.getElementById("modalTitle").textContent="New "+type;
+const fields={
+"Service Request":[["Request No","Auto"],["Requester","Resident / Organization"],["Service Type","Drain Blockage Removal"],["Asset","AST-00042"],["Priority","High"],["Description",""],["Source Channel","Portal"],["Location","Configured location"],["SLA Policy","Standard 24 Hour"]],
+"Inspection":[["Inspection No","Auto"],["Request","SR-2026-0047"],["Asset","AST-00042"],["Inspector","Field Inspector"],["Inspection Type","Complaint"],["Finding","Heavy silt / blockage"],["Severity","High"],["Recommendation","Mechanical cleaning"],["Approval","Pending"]],
+"Work Order":[["Work Order No","Auto"],["Request","SR-2026-0047"],["Asset","AST-00042"],["Work Type","Blockage Removal"],["Crew","Crew Alpha"],["Pod","POD-004"],["Planned Start","28 Sep 2026 15:00"],["Priority","High"],["Status","Draft"]],
+"Dispatch":[["Work Order","WO-2026-0107"],["Crew","Crew Alpha"],["Pod","POD-004"],["Route","R-018"],["Start Time","09:00"],["GPS Validation","Required"],["Mobile Checklist","Enabled"]],
+"Claim":[["Claim No","Auto"],["Contract","CTR-2026-014"],["Period","Sep 2026"],["Measurement","SM-2026-0081"],["Gross","Calculated"],["Deductions","Calculated"],["Retention","Configured"],["Net","Calculated"],["Approval","Pending"]],
+"Contract":[["Contract No","Auto"],["Contractor","Infrastructure Services Ltd."],["Scope","Drain Maintenance"],["Start Date","01 Apr 2026"],["End Date","31 Mar 2027"],["Zones","North, Central"],["SLA","95%"],["Status","Active"]],
+"Asset":[["Asset Code","Auto"],["Asset Type","Drain Segment"],["Zone","North Service Zone"],["Material","Concrete"],["Size","900 mm"],["Latitude","Configured"],["Longitude","Configured"],["Condition","Fair"],["Risk","High"]],
+"Party":[["Party No","Auto"],["Name",""],["Party Type","Citizen / Business / Contractor"],["Email",""],["Phone",""],["Zone","North Service Zone"],["Status","Active"]],
+"Service Type":[["Service Code","Auto"],["Service Name",""],["Category","Drainage"],["UOM","Job"],["Response SLA","24 hrs"],["Completion SLA","48 hrs"],["Billing Method","Contract / Public"],["Status","Active"]],
+"Item":[["Item Code","Auto"],["Item Name",""],["Item Group","Materials"],["UOM","Nos"],["Warehouse","Central Depot"],["Opening Stock","0"],["Reorder Level","0"],["Valuation Method","Configured"]],
+"Resource":[["Resource Code","Auto"],["Resource Type","Crew / Pod / Vehicle / Equipment"],["Name",""],["Zone","North"],["Skill / Capacity",""],["Availability","Available"]],
+"Waste Manifest":[["Manifest No","Auto"],["Work Order","WO-2026-0102"],["Waste Type","Silt / Debris"],["Quantity",""],["UOM","m³"],["Transporter",""],["Destination","Authorized Facility"],["Receipt","Pending"]],
+"Measurement":[["Measurement No","Auto"],["Contract","CTR-2026-014"],["Work Order","WO-2026-0102"],["Service","Preventive Cleaning"],["Quantity",""],["UOM","KM"],["Evidence","Required"],["Verification","Pending"]],
+"Maintenance Request":[["Request No","Auto"],["Asset","POD-004"],["Maintenance Type","Preventive"],["Meter",""],["Due Date",""],["Priority","Normal"],["Status","Open"]],
+"Permit to Work":[["Permit No","Auto"],["Work Order","WO-2026-0107"],["Hazard Class","Confined Space"],["Isolation","Required"],["Gas Test","Required"],["PPE","Mandatory"],["Supervisor",""],["Status","Draft"]],
+"Notification Template":[["Template Code","Auto"],["Event","Work Order Dispatched"],["Channel","Email / SMS / Portal"],["Subject",""],["Message",""],["Status","Active"]],
+"Purchase Requisition":[["PR No","Auto"],["Department","Operations"],["Item","PPE Confined Space Kit"],["Quantity","20"],["Required Date",""],["Approval","Pending"]]
+};
+const fs=fields[type]||[["Document No","Auto"],["Name",""],["Status","Draft"],["Description",""]];
+document.getElementById("modalBody").innerHTML='<div class="formgrid">'+fs.map(f=>`<div class="field"><label>${f[0]}</label><input value="${f[1]}"></div>`).join("")+'</div>';
+document.getElementById("modal").classList.add("show")
+}
+function smartButtons(type,id){
+const map={
+"Service Request":[["Inspections","1","inspections"],["Work Orders","1","workorders"],["Messages","3","communications"],["Attachments","4",null]],
+"Inspection":[["Service Request","1","requests"],["Work Orders","1","workorders"],["Evidence","6",null]],
+"Work Order":[["Service Request","1","requests"],["Inspection","1","inspections"],["Materials","4","items"],["Waste","1","waste"],["Measurements","1","measurements"],["Messages","2","communications"]],
+"Asset":[["Requests","7","requests"],["Inspections","3","inspections"],["Work Orders","5","workorders"],["Maintenance","2","maintenance"]],
+"Contract":[["Work Orders","18","workorders"],["Measurements","42","measurements"],["Claims","6","claims"],["Documents","12",null]],
+"Claim":[["Measurements","42","measurements"],["Contract","1","contracts"],["Payments","2",null],["Messages","3","communications"]],
+"Party":[["Requests","12","requests"],["Contracts","2","contracts"],["Claims","4","claims"]]
+};
+return `<div class="smartbar">${(map[type]||[["Activities","5","audit"],["Messages","2","communications"]]).map(x=>`<button class="smartbtn" onclick="smartNavigate('${x[2]||''}','${x[0]}')"><span>${x[1]}</span><small>${x[0]}</small></button>`).join('')}</div>`
+}
+function smartNavigate(view,label){ if(view){ closeModal(); openView(view); toast(label+' opened'); } else toast(label+' linked records opened'); }
+function openRecord(type,id){
+modalMode=type;document.getElementById("modalTitle").textContent=type+" • "+id;
+document.getElementById("modalBody").innerHTML=`${smartButtons(type,id)}<div class="tabs"><div class="tab active">Overview</div><div class="tab">Activity</div><div class="tab">Related Documents</div></div><div class="kv"><div>Document No</div><div>${id}</div><div>Document Type</div><div>${type}</div><div>Status</div><div>${badge(type==="Service Request"?"Assigned":type==="Work Order"?"Dispatched":"Active")}</div><div>Created By</div><div>System User</div><div>Last Updated</div><div>28 Sep 2026</div></div><h3 style="margin-top:18px">Workflow</h3><div class="workflow"><div class="step done"><div class="circle">✓</div><b>Created</b></div><div class="step current"><div class="circle">2</div><b>Processing</b></div><div class="step"><div class="circle">3</div><b>Approved</b></div><div class="step"><div class="circle">4</div><b>Closed</b></div></div><h3>Activity</h3><div class="timeline"><div class="event"><b>Operations update</b><small>Resource assignment recorded • 10:14</small></div><div class="event"><b>System</b><small>SLA timer calculated • 09:42</small></div></div>`;
+document.getElementById("modal").classList.add("show")
+}
+function executeJob(id){modalMode="Job Execution";document.getElementById("modalTitle").textContent="Field Job • "+id;document.getElementById("modalBody").innerHTML=`<div class="alert">Field execution screen — designed for mobile/offline use.</div><div class="formgrid"><div class="field"><label>Start GPS</label><input value="Captured on device"></div><div class="field"><label>Start Time</label><input value="28 Sep 2026 10:30"></div><div class="field"><label>Meter Start</label><input value=""></div><div class="field"><label>Quantity Completed</label><input value=""></div><div class="field"><label>Waste Quantity</label><input value=""></div><div class="field"><label>End GPS</label><input value="Pending"></div><div class="field span3"><label>Checklist / Evidence</label><textarea placeholder="Photo, video, checklist, notes..."></textarea></div></div>`;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function saveModal(){if(modalMode==='Field'||modalMode==='New Field'){const d=doctypeDB[selectedDoctype];const f=[document.getElementById('ef_name').value,document.getElementById('ef_type').value,document.getElementById('ef_req').value,document.getElementById('ef_help').value,document.getElementById('ef_sample').value];if(modalMode==='Field'){const idx=d.fields.findIndex(x=>x[0]===document.getElementById('ef_name').defaultValue);if(idx>=0)d.fields[idx]=f}else d.fields.push(f);selectDoctype(selectedDoctype);toast('Field saved');closeModal();return}if(modalMode==="Service Request"){requests.unshift({id:"SR-2026-0063",party:"New Requester",service:"Drain Blockage Removal",asset:"AST-00042",priority:"Normal",due:"Calculated",status:"New"});renderTables();renderDoctypes();document.getElementById("kpiReq").textContent=requests.length+43}toast(modalMode+" saved successfully");closeModal()}
+function switchTab(el,id){el.parentElement.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));el.classList.add("active");el.parentElement.parentElement.querySelectorAll(".tabpane").forEach(p=>p.style.display="none");document.getElementById(id).style.display="block"}
+function openReport(name){toast(name+" opened — filters and export are available in the full report screen")}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function saveSettings(){let a=document.getElementById("authority").value,c=document.getElementById("country").value;document.getElementById("authorityContext").textContent="Authority: "+a+" • "+c;toast("Deployment settings saved")}
+document.getElementById("globalSearch").addEventListener("input",e=>{let q=e.target.value.toLowerCase();if(!q)return;let map=[...document.querySelectorAll("tbody tr")];let hit=map.find(r=>r.innerText.toLowerCase().includes(q));if(hit){hit.scrollIntoView({behavior:"smooth",block:"center"});hit.style.outline="2px solid #714B67";setTimeout(()=>hit.style.outline="",1200)}})
+renderTables();
+</script>
+</body></html>
